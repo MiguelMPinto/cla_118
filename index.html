@@ -31,28 +31,38 @@
 
 
 
-    <script src="script.js"></script>
-    <script>
-        loadJSON().then(data => {
-            // Vamos assumir que a primeira folha tem os nomes
-            const sheet = Object.values(data)[0];
-            const div = document.getElementById("lista");
+    <script type="module">
+        import { loadJSON } from "./script.js";
 
-            sheet.forEach(c => {
-                const nome = c["Unnamed: 10"];
-                if (!nome) return;
+        const data = await loadJSON();
+        console.log("DATA =", data);
 
-                const btn = document.createElement("button");
-                btn.className = "caminheiro-btn";
-                btn.textContent = nome;
 
-                btn.onclick = () => {
-                    window.location.href = `perfil.html?nome=${encodeURIComponent(nome)}`;
-                }
-                div.appendChild(btn);
-            });
+
+        const lista = data.Caminheiros;
+        console.log(lista[3]);
+        console.log(Object.keys(lista[0]));
+
+        const div = document.getElementById("lista");
+
+        lista.forEach(c => {
+            const nome = c["Nome"];   
+            if (!nome) return;
+
+            const btn = document.createElement("button");
+            btn.className = "caminheiro-btn";
+            btn.textContent = nome;
+
+            btn.onclick = () => {
+                window.location.href = `perfil.html?nome=${encodeURIComponent(nome)}`;
+            };
+
+            div.appendChild(btn);
         });
     </script>
+
+
+
 
 </body>
 

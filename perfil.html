@@ -9,14 +9,14 @@
 
 <body>
 
-    <nav>
-        <div class="nav-left">
-            <a href="index.html">Caminheiros</a>
-            <a href="trilhos.html">Trilhos</a>
-        </div>
+  <nav>
+    <div class="nav-left">
+      <a href="index.html">Caminheiros</a>
+      <a href="trilhos.html">Trilhos</a>
+    </div>
 
-        <img src="img/agrup_logo.jpg" class="nav-logo">
-    </nav>
+    <img src="img/agrup_logo.jpg" class="nav-logo">
+  </nav>
 
 
   <div class="page">
@@ -41,8 +41,10 @@
 
   </div>
 
-  <script src="script.js"></script>
-  <script>
+  <script type="module" src="script.js"></script>
+
+  <script type="module">
+    import { loadJSON, parseSheetDate } from "./script.js";
     const AREAS = [
 
       /* ========= FÍSICO ========= */
@@ -51,12 +53,12 @@
         titulo: "Bem-estar Físico",
         css: "area-f",
         objetivos: [
-          { campo: "nan.1", codigo: "F1", texto: "Praticar actividade física que promova o desenvolvimento e manutenção da agilidade, flexibilidade e destreza" },
-          { campo: "Unnamed: 22", codigo: "F2", texto: "Conhecer e aceitar o desenvolvimento e amadurecimento do seu corpo com naturalidade" },
-          { campo: "Unnamed: 23", codigo: "F3", texto: "Conhecer as características fisiológicas do corpo masculino e feminino" },
-          { campo: "Unnamed: 24", codigo: "F4", texto: "Cultivar um estilo de vida saudável e equilibrado (alimentação, actividade física e repouso)" },
-          { campo: "Unnamed: 25", codigo: "F5", texto: "Cuidar e valorizar o seu corpo de acordo com padrões de saúde, revelando aprumo" },
-          { campo: "Unnamed: 26", codigo: "F6", texto: "Identificar e evitar comportamentos de risco relacionados com segurança física e consumo de substâncias" }
+          { campo: "F1", codigo: "F1", texto: "Praticar actividade física que promova o desenvolvimento e manutenção da agilidade, flexibilidade e destreza" },
+          { campo: "F2", codigo: "F2", texto: "Conhecer e aceitar o desenvolvimento e amadurecimento do seu corpo com naturalidade" },
+          { campo: "F3", codigo: "F3", texto: "Conhecer as características fisiológicas do corpo masculino e feminino" },
+          { campo: "F4", codigo: "F4", texto: "Cultivar um estilo de vida saudável e equilibrado (alimentação, actividade física e repouso)" },
+          { campo: "F5", codigo: "F5", texto: "Cuidar e valorizar o seu corpo de acordo com padrões de saúde, revelando aprumo" },
+          { campo: "F6", codigo: "F6", texto: "Identificar e evitar comportamentos de risco relacionados com segurança física e consumo de substâncias" }
         ]
       },
 
@@ -66,12 +68,12 @@
         titulo: "Afectivo / Emocional",
         css: "area-a",
         objetivos: [
-          { campo: "nan.2", codigo: "A1", texto: "Valorizar e demonstrar sensibilidade nas suas relações afectivas" },
-          { campo: "Unnamed: 28", codigo: "A2", texto: "Respeitar várias sensibilidades estéticas e artísticas com sentido crítico" },
-          { campo: "Unnamed: 29", codigo: "A3", texto: "Assumir a própria sexualidade de forma responsável" },
-          { campo: "Unnamed: 30", codigo: "A4", texto: "Identificar, compreender e expressar emoções tendo em conta os outros" },
-          { campo: "Unnamed: 31", codigo: "A5", texto: "Reconhecer e aceitar a sua personalidade mantendo atitude de aperfeiçoamento" },
-          { campo: "Unnamed: 32", codigo: "A6", texto: "Valorizar capacidades, superar limitações e manter atitude positiva" }
+          { campo: "A1", codigo: "A1", texto: "Valorizar e demonstrar sensibilidade nas suas relações afectivas" },
+          { campo: "A2", codigo: "A2", texto: "Respeitar várias sensibilidades estéticas e artísticas com sentido crítico" },
+          { campo: "A3", codigo: "A3", texto: "Assumir a própria sexualidade de forma responsável" },
+          { campo: "A4", codigo: "A4", texto: "Identificar, compreender e expressar emoções tendo em conta os outros" },
+          { campo: "A5", codigo: "A5", texto: "Reconhecer e aceitar a sua personalidade mantendo atitude de aperfeiçoamento" },
+          { campo: "A6", codigo: "A6", texto: "Valorizar capacidades, superar limitações e manter atitude positiva" }
         ]
       },
 
@@ -81,14 +83,14 @@
         titulo: "Carácter / Autonomia / Responsabilidade",
         css: "area-c",
         objetivos: [
-          { campo: "nan.3", codigo: "C1", texto: "Possuir e desenvolver um quadro de valores fruto de opção consciente" },
-          { campo: "Unnamed: 34", codigo: "C2", texto: "Formular e construir opções, assumindo-as com clareza" },
-          { campo: "Unnamed: 35", codigo: "C3", texto: "Ser responsável pelo seu desenvolvimento e definir objectivos pessoais" },
-          { campo: "Unnamed: 36", codigo: "C4", texto: "Demonstrar empenho e assumir responsabilidades, estabelecendo prioridades" },
-          { campo: "Unnamed: 37", codigo: "C5", texto: "Demonstrar perseverança nas dificuldades com optimismo" },
-          { campo: "Unnamed: 38", codigo: "C6", texto: "Ser consequente com as opções que toma" },
-          { campo: "Unnamed: 39", codigo: "C7", texto: "Ser consistente e convicto na defesa das suas ideias e valores" },
-          { campo: "Unnamed: 40", codigo: "C8", texto: "Dar testemunho agindo coerentemente com os seus valores" }
+          { campo: "C1", codigo: "C1", texto: "Possuir e desenvolver um quadro de valores fruto de opção consciente" },
+          { campo: "C2", codigo: "C2", texto: "Formular e construir opções, assumindo-as com clareza" },
+          { campo: "C3", codigo: "C3", texto: "Ser responsável pelo seu desenvolvimento e definir objectivos pessoais" },
+          { campo: "C4", codigo: "C4", texto: "Demonstrar empenho e assumir responsabilidades, estabelecendo prioridades" },
+          { campo: "C5", codigo: "C5", texto: "Demonstrar perseverança nas dificuldades com optimismo" },
+          { campo: "C6", codigo: "C6", texto: "Ser consequente com as opções que toma" },
+          { campo: "C7", codigo: "C7", texto: "Ser consistente e convicto na defesa das suas ideias e valores" },
+          { campo: "C8", codigo: "C8", texto: "Dar testemunho agindo coerentemente com os seus valores" }
         ]
       },
 
@@ -98,14 +100,14 @@
         titulo: "Espiritual / Descoberta / Serviço",
         css: "area-e",
         objetivos: [
-          { campo: "nan.4", codigo: "E1", texto: "Conhecer como Deus se revelou à humanidade (História da Salvação)" },
-          { campo: "Unnamed: 42", codigo: "E2", texto: "Conhecer profundamente a mensagem e proposta de Jesus Cristo" },
-          { campo: "Unnamed: 43", codigo: "E3", texto: "Reconhecer a pertença à Igreja como sinal de Deus no mundo" },
-          { campo: "Unnamed: 44", codigo: "E4", texto: "Aprofundar oração pessoal e participação activa na comunidade" },
-          { campo: "Unnamed: 45", codigo: "E5", texto: "Integrar na vida os valores do Evangelho" },
-          { campo: "Unnamed: 46", codigo: "E6", texto: "Conhecer as principais religiões valorizando a identidade da Igreja Católica" },
-          { campo: "Unnamed: 47", codigo: "E7", texto: "Testemunhar que Deus dignifica a vida humana e a natureza" },
-          { campo: "Unnamed: 48", codigo: "E8", texto: "Viver o compromisso cristão como missão no mundo" }
+          { campo: "E1", codigo: "E1", texto: "Conhecer como Deus se revelou à humanidade (História da Salvação)" },
+          { campo: "E2", codigo: "E2", texto: "Conhecer profundamente a mensagem e proposta de Jesus Cristo" },
+          { campo: "E3", codigo: "E3", texto: "Reconhecer a pertença à Igreja como sinal de Deus no mundo" },
+          { campo: "E4", codigo: "E4", texto: "Aprofundar oração pessoal e participação activa na comunidade" },
+          { campo: "E5", codigo: "E5", texto: "Integrar na vida os valores do Evangelho" },
+          { campo: "E6", codigo: "E6", texto: "Conhecer as principais religiões valorizando a identidade da Igreja Católica" },
+          { campo: "E7", codigo: "E7", texto: "Testemunhar que Deus dignifica a vida humana e a natureza" },
+          { campo: "E8", codigo: "E8", texto: "Viver o compromisso cristão como missão no mundo" }
         ]
       },
 
@@ -115,13 +117,13 @@
         titulo: "Intelectual",
         css: "area-i",
         objetivos: [
-          { campo: "nan.5", codigo: "I1", texto: "Procurar activamente novos saberes e vivências" },
-          { campo: "Unnamed: 50", codigo: "I2", texto: "Usar correctamente recolha e análise de informação" },
-          { campo: "Unnamed: 51", codigo: "I3", texto: "Definir e manter atualizado um itinerário de formação" },
-          { campo: "Unnamed: 52", codigo: "I4", texto: "Adaptar-se e superar novas situações" },
-          { campo: "Unnamed: 53", codigo: "I5", texto: "Analisar problemas criticamente e propor soluções" },
-          { campo: "Unnamed: 54", codigo: "I6", texto: "Criar novas ideias e obras com espírito inovador" },
-          { campo: "Unnamed: 55", codigo: "I7", texto: "Expressar ideias de forma lógica e criativa" }
+          { campo: "I1", codigo: "I1", texto: "Procurar activamente novos saberes e vivências" },
+          { campo: "I2", codigo: "I2", texto: "Usar correctamente recolha e análise de informação" },
+          { campo: "I3", codigo: "I3", texto: "Definir e manter atualizado um itinerário de formação" },
+          { campo: "I4", codigo: "I4", texto: "Adaptar-se e superar novas situações" },
+          { campo: "I5", codigo: "I5", texto: "Analisar problemas criticamente e propor soluções" },
+          { campo: "I6", codigo: "I6", texto: "Criar novas ideias e obras com espírito inovador" },
+          { campo: "I7", codigo: "I7", texto: "Expressar ideias de forma lógica e criativa" }
         ]
       },
 
@@ -131,13 +133,13 @@
         titulo: "Social / Cidadania / Cooperação",
         css: "area-s",
         objetivos: [
-          { campo: "nan.6", codigo: "S1", texto: "Conhecer e exercer direitos e deveres de cidadão" },
-          { campo: "Unnamed: 57", codigo: "S2", texto: "Participar ativamente nos espaços sociais onde se insere" },
-          { campo: "Unnamed: 58", codigo: "S3", texto: "Respeitar regras democráticas e decisões colectivas" },
-          { campo: "Unnamed: 59", codigo: "S4", texto: "Assumir serviço à sociedade construindo futuro" },
-          { campo: "Unnamed: 60", codigo: "S5", texto: "Comunicar com empatia e tolerância" },
-          { campo: "Unnamed: 61", codigo: "S6", texto: "Trabalhar em equipa contribuindo para o sucesso colectivo" },
-          { campo: "Unnamed: 62", codigo: "S7", texto: "Assumir papéis de liderança equilibrada" }
+          { campo: "S1", codigo: "S1", texto: "Conhecer e exercer direitos e deveres de cidadão" },
+          { campo: "S2", codigo: "S2", texto: "Participar ativamente nos espaços sociais onde se insere" },
+          { campo: "S3", codigo: "S3", texto: "Respeitar regras democráticas e decisões colectivas" },
+          { campo: "S4", codigo: "S4", texto: "Assumir serviço à sociedade construindo futuro" },
+          { campo: "S5", codigo: "S5", texto: "Comunicar com empatia e tolerância" },
+          { campo: "S6", codigo: "S6", texto: "Trabalhar em equipa contribuindo para o sucesso colectivo" },
+          { campo: "S7", codigo: "S7", texto: "Assumir papéis de liderança equilibrada" }
         ]
       }
 
@@ -145,15 +147,14 @@
 
 
 
-    function renderArea(pessoa, areaConfig) {
-
+    function renderArea(areaConfig, objetivosMap ) {
       let html = `<div class="area-card ${areaConfig.css}">
       <h2>${areaConfig.titulo}</h2>
       <ul>
   `;
 
       areaConfig.objetivos.forEach(item => {
-        const estado = pessoa[item.campo] || "Sem dados";
+        const estado = objetivosMap[item.codigo] || "Sem dados";
 
         let classe = "mid";
         if (estado === "Validado") classe = "ok";
@@ -235,20 +236,36 @@
       const lista = data.Caminheiros;
 
       // 3️⃣ Encontrar a pessoa
-      const pessoa = lista.find(p => p["Unnamed: 10"] === nome);
+      const pessoa = lista.find(p => p["Nome"] === nome);
+
 
       if (!pessoa) {
         document.getElementById("trilhos").innerHTML = "<p>Não encontrado.</p>";
         return;
       }
 
+      // 🔥 MAPEAR CAMPOS → F1, A3, C7 ...
+      const objetivosMap = {};
+
+      Object.entries(pessoa).forEach(([key, value]) => {
+        const m = key.match(/([FAECIS]\d+)$/);   // apanha A1 F3 C7 etc
+        if (m) objetivosMap[m[1]] = value;
+      });
+
+      console.log("Objetivos Map =", objetivosMap);
+
+
+
+      console.log("Pessoa =", parseSheetDate(pessoa["#NAME? Caminho"]));
+
       // 4️⃣ Mostrar trilhos
       const trilhosHTML = `
-    <p><strong>Caminho:</strong> ${pessoa["Unnamed: 6"] || "-"}</p>
-    <p><strong>Comunidade:</strong> ${pessoa["Unnamed: 7"] || "-"}</p>
-    <p><strong>Serviço:</strong> ${pessoa["Unnamed: 8"] || "-"}</p>
-    <p><strong>Partida:</strong> ${pessoa["Unnamed: 9"] || "-"}</p>
-  `;
+  <p><strong>Caminho:</strong> ${parseSheetDate(pessoa["#NAME? Caminho"]) || "-"}</p>
+  <p><strong>Comunidade:</strong> ${parseSheetDate(pessoa["#NAME? Comunidade"]) || "-"}</p>
+  <p><strong>Serviço:</strong> ${parseSheetDate(pessoa["#NAME? Serviço"]) || "-"}</p>
+  <p><strong>Partida:</strong> ${parseSheetDate(pessoa["#NAME? Partida"]) || "-"}</p>
+`;
+
 
       document.getElementById("trilhos").innerHTML = trilhosHTML;
 
@@ -256,7 +273,7 @@
       let areasHTML = "";
 
       AREAS.forEach(area => {
-        areasHTML += renderArea(pessoa, area);
+        areasHTML += renderArea(area, objetivosMap);
       });
 
       document.getElementById("areas").innerHTML = areasHTML;
