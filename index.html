@@ -35,13 +35,8 @@
         import { loadJSON } from "./script.js";
 
         const data = await loadJSON();
-        console.log("DATA =", data);
-
-
 
         const lista = data.Caminheiros;
-        console.log(lista[3]);
-        console.log(Object.keys(lista[0]));
 
         const div = document.getElementById("lista");
 

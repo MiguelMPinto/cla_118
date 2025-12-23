@@ -147,9 +147,10 @@
 
 
 
-    function renderArea(areaConfig, objetivosMap ) {
+    function renderArea(areaConfig, objetivosMap) {
       let html = `<div class="area-card ${areaConfig.css}">
-      <h2>${areaConfig.titulo}</h2>
+      <h2>${areaConfig.id.charAt(0).toUpperCase() + areaConfig.id.slice(1)}</h2>
+
       <ul>
   `;
 
@@ -176,13 +177,14 @@
       return html;
     }
 
-    function gerarEstatisticas(pessoa) {
-
+    function gerarEstatisticas(objetivosMap) {
       const todos = [];
 
       AREAS.forEach(area => {
         area.objetivos.forEach(obj => {
-          const estado = pessoa[obj.campo];
+          const raw = objetivosMap[obj.codigo] ?? "Sem dados";
+          const estado =
+            typeof raw === "string" ? raw.trim() : raw; // tira espaços extras
 
           todos.push({
             codigo: obj.codigo,
@@ -218,8 +220,8 @@
   <h3>Faltam:</h3>
   ${listaHTML}
 `;
-
     }
+
 
 
 
@@ -252,11 +254,6 @@
         if (m) objetivosMap[m[1]] = value;
       });
 
-      console.log("Objetivos Map =", objetivosMap);
-
-
-
-      console.log("Pessoa =", parseSheetDate(pessoa["#NAME? Caminho"]));
 
       // 4️⃣ Mostrar trilhos
       const trilhosHTML = `
@@ -286,12 +283,13 @@
         panel.classList.toggle("hidden");
 
         if (!panel.classList.contains("hidden")) {
-          panel.innerHTML = gerarEstatisticas(pessoa);
+          panel.innerHTML = gerarEstatisticas(objetivosMap);
           btn.textContent = "Esconder estatísticas";
         } else {
           btn.textContent = "Ver estatísticas";
         }
       };
+
 
     }
 

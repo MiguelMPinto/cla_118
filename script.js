@@ -63,11 +63,6 @@ function getAreaItems(obj, letraArea) {
 }
 
 
-//const objetivosA = getAreaItems(p, "A");
-
-//console.log(objetivosA);
-
-
 async function trilhosPageMain() {
 
   const nav = document.querySelector(".trilhos-nav");
