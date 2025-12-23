@@ -1,0 +1,511 @@
+/* --------- BASE --------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial;
+  background: #f5f7fa;
+}
+
+
+/* --------- NAVBAR --------- */
+
+
+nav a {
+  color: #555;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+nav a.active,
+nav a:hover {
+  color: #b30000;
+}
+
+
+/* --------- PAGE CONTAINER --------- */
+.page {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* --------- TITLE --------- */
+h1 {
+  font-size: 34px;
+  color: #b30000;
+  margin-bottom: 25px;
+  border-left: 8px solid #b30000;
+  padding-left: 12px;
+}
+
+/* --------- BUTTON LIST --------- */
+#lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.caminheiro-btn {
+  background: white;
+  border: 2px solid #b30000;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: .2s;
+  width: 100%;
+  color: #222;
+}
+
+.caminheiro-btn:hover {
+  background: #b30000;
+  color: white;
+  transform: scale(1.03);
+}
+
+/* --------- MOBILE FRIENDLY --------- */
+@media(max-width: 600px) {
+  h1 {
+    font-size: 26px;
+  }
+}
+
+#fisico li {
+  margin: 10px 0;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+/* 🎨 BASE DO CARD */
+/* PERFIL – cards F, A, C, E, I, S */
+.trilhos-area-card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin-top: 20px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border-left: 10px solid transparent;
+}
+
+
+
+/* --------- TAGS DE STATUS --------- */
+
+
+.tag {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.tag.ok {
+  color: #1f7a1f;
+  background: #dbf5db;
+}
+
+.tag.not {
+  color: #b30000;
+  background: #ffd9d9;
+}
+
+.tag.mid {
+  color: #9f6000;
+  background: #ffe9b5;
+}
+
+
+.trilhos-card {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 14px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border-left: 10px solid #b30000;
+}
+
+/* Título */
+.trilhos-card h2 {
+  margin-bottom: 10px;
+}
+
+/* Cada linha */
+.trilhos-card p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+/* Nome do trilho em bold, valor destacado */
+.trilhos-card strong {
+  color: #333;
+}
+
+/* Se quiseres dar estilo aos valores */
+.trilho-valor {
+  padding: 3px 6px;
+  background: #f2f2f2;
+  border-radius: 6px;
+}
+
+.stats-btn {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #b30000;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.stats-btn:hover {
+  background: #8c0000;
+}
+
+/* Painel escondido */
+.hidden {
+  display: none;
+}
+
+/* Caixa de estatísticas */
+.stats-panel {
+  margin-top: 14px;
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid #ddd;
+}
+
+.stats-panel p {
+  margin: 6px 0;
+}
+
+.stats-list li {
+  margin: 4px 0;
+}
+
+.stats-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stat-box {
+  flex: 1;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+  background: white;
+  border: 1px solid #ddd;
+}
+
+.stat-box span {
+  display: block;
+  font-size: 22px;
+}
+
+.stat-box.total {
+  border-left: 8px solid #555;
+}
+
+.stat-box.done {
+  border-left: 8px solid #3fa64d;
+  color: #1f7a1f;
+}
+
+.stat-box.pending {
+  border-left: 8px solid #d64545;
+  color: #8c0000;
+}
+
+/* Lista mais suave */
+.stats-list li {
+  margin: 6px 0;
+  line-height: 1.3;
+}
+
+.stats-list {
+  margin-top: 10px;
+  padding-left: 25px;
+  /* afasta das bordas */
+  list-style-position: outside;
+  /* garante que as bolinhas ficam fora */
+}
+
+.stats-list li {
+  margin: 4px 0;
+}
+
+.trilhos-nav {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.trilhos-nav button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #f1f1f1;
+  font-weight: bold;
+}
+
+.trilhos-nav button:hover,
+.trilhos-nav button.active {
+  background: #d9d9d9;
+  transform: scale(1.03);
+}
+
+.trilhos-card {
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.trilho-item {
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 6px;
+  background: white;
+}
+
+.ok-check {
+  color: green;
+  font-weight: bold;
+}
+
+.no-check {
+  color: red;
+  font-weight: bold;
+}
+
+.trilhos-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+}
+
+
+.trilho-title {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.trilho-list {
+  padding-left: 25px;
+  margin-top: 5px;
+}
+
+.ok {
+  color: green;
+  font-weight: bold;
+}
+
+.no {
+  color: red;
+  font-weight: bold;
+}
+
+/* ====== TRILHOS.HTML ====== */
+
+/* Nav de áreas centrada */
+.trilhos-page .trilhos-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+}
+
+.trilhos-page .trilhos-nav button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #f1f1f1;
+  font-weight: bold;
+}
+
+.trilhos-page .trilhos-nav button:hover,
+.trilhos-page .trilhos-nav button.active {
+  background: #d9d9d9;
+  transform: scale(1.03);
+}
+
+/* Card que contém os trilhos da área selecionada */
+.trilhos-page .trilhos-area-card {
+  padding: 20px;
+  border-radius: 18px;
+  background: white;
+  width: 85%;
+  margin: 0 auto 40px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Título de cada trilho (F1, A2, etc) */
+.trilhos-page .trilho-title {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Lista de nomes em cada trilho */
+.trilhos-page .trilho-list {
+  padding-left: 25px;
+  margin-top: 4px;
+}
+
+/* Ícones ✔ e ✖ */
+.trilhos-page .ok {
+  color: #1f7a1f;
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.trilhos-page .no {
+  color: #b00000;
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+/* ====== CORREÇÃO FINAL – CARDS DAS ÁREAS ====== */
+
+.area-card {
+  width: 85%;
+  margin: 25px auto;
+  padding: 22px 28px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-left: 12px solid transparent;
+}
+
+/* fundo suave igual ao antes */
+.area-f {
+  background: #e9f7ec;
+  border-left-color: #3fa64d;
+}
+
+.area-a {
+  background: #fdeaea;
+  border-left-color: #d64545;
+}
+
+.area-c {
+  background: #e8f1ff;
+  border-left-color: #3f7fd6;
+}
+
+.area-e {
+  background: #fff7dd;
+  border-left-color: #d6b23f;
+}
+
+.area-i {
+  background: #f2e9ff;
+  border-left-color: #8a3fd6;
+}
+
+.area-s {
+  background: #e8fbff;
+  border-left-color: #2bb4c0;
+}
+
+.area-card h2 {
+  margin-bottom: 8px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.area-card li {
+  margin: 10px 0;
+}
+/* Fundo visual por área */
+.trilhos-area-f { background:#e9f7ec; border-left: 10px solid #3fa64d; }
+.trilhos-area-a { background:#fdeaea; border-left: 10px solid #d64545; }
+.trilhos-area-c { background:#e8f1ff; border-left: 10px solid #3f7fd6; }
+.trilhos-area-e { background:#fff7dd; border-left: 10px solid #d6b23f; }
+.trilhos-area-i { background:#f2e9ff; border-left: 10px solid #8a3fd6; }
+.trilhos-area-s { background:#e8fbff; border-left: 10px solid #2bb4c0; }
+
+.trilhos-area-card {
+  width: 85%;
+  margin: 20px auto 50px auto;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.trilho-list li {
+  padding: 4px 0;
+}
+
+.ok {
+  color: #1f7a1f;
+  font-weight: bold;
+}
+
+.no {
+  color: #b00000;
+  font-weight: bold;
+}
+
+.trilhos-nav button.active[data-area="F"] { background:#c7ebce; }
+.trilhos-nav button.active[data-area="A"] { background:#f8caca; }
+.trilhos-nav button.active[data-area="C"] { background:#cfe1ff; }
+.trilhos-nav button.active[data-area="E"] { background:#ffefb0; }
+.trilhos-nav button.active[data-area="I"] { background:#e8d4ff; }
+.trilhos-nav button.active[data-area="S"] { background:#c9f7ff; }
+
+.subtitle {
+  color: #555;
+  font-size: 16px;
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+.site-logo {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  height: 55px;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
+.site-logo:hover {
+  opacity: 1;
+}
+nav {
+  background: #ffffff;
+  padding: 12px 25px;
+  display: flex;
+  justify-content: space-between;   /* esquerda ↔ direita */
+  align-items: center;               /* centra verticalmente */
+  border-bottom: 2px solid #ddd;
+}
+
+.nav-left {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-logo {
+  height: 45px;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
+.nav-logo:hover {
+  opacity: 1;
+}

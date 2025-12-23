@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil do Caminheiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="caminheiros.html">Caminheiros</a>
+            <a href="trilhos.html">Trilhos</a>
+        </div>
+
+        <img src="img/agrup_logo.jpg" class="nav-logo">
+    </nav>
+
+
+  <div class="page">
+    <h1 id="nome"></h1>
+
+    <div class="trilhos-card">
+      <h2>Trilhos</h2>
+      <div id="trilhos"></div>
+
+      <button id="btnStats" class="stats-btn">Ver estatísticas</button>
+
+      <div id="statsPanel" class="stats-panel hidden"></div>
+    </div>
+
+
+
+    <div id="areas"></div>
+
+
+
+
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const AREAS = [
+
+      /* ========= FÍSICO ========= */
+      {
+        id: "fisico",
+        titulo: "Bem-estar Físico",
+        css: "area-f",
+        objetivos: [
+          { campo: "nan.1", codigo: "F1", texto: "Praticar actividade física que promova o desenvolvimento e manutenção da agilidade, flexibilidade e destreza" },
+          { campo: "Unnamed: 22", codigo: "F2", texto: "Conhecer e aceitar o desenvolvimento e amadurecimento do seu corpo com naturalidade" },
+          { campo: "Unnamed: 23", codigo: "F3", texto: "Conhecer as características fisiológicas do corpo masculino e feminino" },
+          { campo: "Unnamed: 24", codigo: "F4", texto: "Cultivar um estilo de vida saudável e equilibrado (alimentação, actividade física e repouso)" },
+          { campo: "Unnamed: 25", codigo: "F5", texto: "Cuidar e valorizar o seu corpo de acordo com padrões de saúde, revelando aprumo" },
+          { campo: "Unnamed: 26", codigo: "F6", texto: "Identificar e evitar comportamentos de risco relacionados com segurança física e consumo de substâncias" }
+        ]
+      },
+
+      /* ========= AFETIVO ========= */
+      {
+        id: "afetivo",
+        titulo: "Afectivo / Emocional",
+        css: "area-a",
+        objetivos: [
+          { campo: "nan.2", codigo: "A1", texto: "Valorizar e demonstrar sensibilidade nas suas relações afectivas" },
+          { campo: "Unnamed: 28", codigo: "A2", texto: "Respeitar várias sensibilidades estéticas e artísticas com sentido crítico" },
+          { campo: "Unnamed: 29", codigo: "A3", texto: "Assumir a própria sexualidade de forma responsável" },
+          { campo: "Unnamed: 30", codigo: "A4", texto: "Identificar, compreender e expressar emoções tendo em conta os outros" },
+          { campo: "Unnamed: 31", codigo: "A5", texto: "Reconhecer e aceitar a sua personalidade mantendo atitude de aperfeiçoamento" },
+          { campo: "Unnamed: 32", codigo: "A6", texto: "Valorizar capacidades, superar limitações e manter atitude positiva" }
+        ]
+      },
+
+      /* ========= CARÁTER ========= */
+      {
+        id: "caracter",
+        titulo: "Carácter / Autonomia / Responsabilidade",
+        css: "area-c",
+        objetivos: [
+          { campo: "nan.3", codigo: "C1", texto: "Possuir e desenvolver um quadro de valores fruto de opção consciente" },
+          { campo: "Unnamed: 34", codigo: "C2", texto: "Formular e construir opções, assumindo-as com clareza" },
+          { campo: "Unnamed: 35", codigo: "C3", texto: "Ser responsável pelo seu desenvolvimento e definir objectivos pessoais" },
+          { campo: "Unnamed: 36", codigo: "C4", texto: "Demonstrar empenho e assumir responsabilidades, estabelecendo prioridades" },
+          { campo: "Unnamed: 37", codigo: "C5", texto: "Demonstrar perseverança nas dificuldades com optimismo" },
+          { campo: "Unnamed: 38", codigo: "C6", texto: "Ser consequente com as opções que toma" },
+          { campo: "Unnamed: 39", codigo: "C7", texto: "Ser consistente e convicto na defesa das suas ideias e valores" },
+          { campo: "Unnamed: 40", codigo: "C8", texto: "Dar testemunho agindo coerentemente com os seus valores" }
+        ]
+      },
+
+      /* ========= ESPIRITUAL ========= */
+      {
+        id: "espiritual",
+        titulo: "Espiritual / Descoberta / Serviço",
+        css: "area-e",
+        objetivos: [
+          { campo: "nan.4", codigo: "E1", texto: "Conhecer como Deus se revelou à humanidade (História da Salvação)" },
+          { campo: "Unnamed: 42", codigo: "E2", texto: "Conhecer profundamente a mensagem e proposta de Jesus Cristo" },
+          { campo: "Unnamed: 43", codigo: "E3", texto: "Reconhecer a pertença à Igreja como sinal de Deus no mundo" },
+          { campo: "Unnamed: 44", codigo: "E4", texto: "Aprofundar oração pessoal e participação activa na comunidade" },
+          { campo: "Unnamed: 45", codigo: "E5", texto: "Integrar na vida os valores do Evangelho" },
+          { campo: "Unnamed: 46", codigo: "E6", texto: "Conhecer as principais religiões valorizando a identidade da Igreja Católica" },
+          { campo: "Unnamed: 47", codigo: "E7", texto: "Testemunhar que Deus dignifica a vida humana e a natureza" },
+          { campo: "Unnamed: 48", codigo: "E8", texto: "Viver o compromisso cristão como missão no mundo" }
+        ]
+      },
+
+      /* ========= INTELECTUAL ========= */
+      {
+        id: "intelectual",
+        titulo: "Intelectual",
+        css: "area-i",
+        objetivos: [
+          { campo: "nan.5", codigo: "I1", texto: "Procurar activamente novos saberes e vivências" },
+          { campo: "Unnamed: 50", codigo: "I2", texto: "Usar correctamente recolha e análise de informação" },
+          { campo: "Unnamed: 51", codigo: "I3", texto: "Definir e manter atualizado um itinerário de formação" },
+          { campo: "Unnamed: 52", codigo: "I4", texto: "Adaptar-se e superar novas situações" },
+          { campo: "Unnamed: 53", codigo: "I5", texto: "Analisar problemas criticamente e propor soluções" },
+          { campo: "Unnamed: 54", codigo: "I6", texto: "Criar novas ideias e obras com espírito inovador" },
+          { campo: "Unnamed: 55", codigo: "I7", texto: "Expressar ideias de forma lógica e criativa" }
+        ]
+      },
+
+      /* ========= SOCIAL ========= */
+      {
+        id: "social",
+        titulo: "Social / Cidadania / Cooperação",
+        css: "area-s",
+        objetivos: [
+          { campo: "nan.6", codigo: "S1", texto: "Conhecer e exercer direitos e deveres de cidadão" },
+          { campo: "Unnamed: 57", codigo: "S2", texto: "Participar ativamente nos espaços sociais onde se insere" },
+          { campo: "Unnamed: 58", codigo: "S3", texto: "Respeitar regras democráticas e decisões colectivas" },
+          { campo: "Unnamed: 59", codigo: "S4", texto: "Assumir serviço à sociedade construindo futuro" },
+          { campo: "Unnamed: 60", codigo: "S5", texto: "Comunicar com empatia e tolerância" },
+          { campo: "Unnamed: 61", codigo: "S6", texto: "Trabalhar em equipa contribuindo para o sucesso colectivo" },
+          { campo: "Unnamed: 62", codigo: "S7", texto: "Assumir papéis de liderança equilibrada" }
+        ]
+      }
+
+    ];
+
+
+
+    function renderArea(pessoa, areaConfig) {
+
+      let html = `<div class="area-card ${areaConfig.css}">
+      <h2>${areaConfig.titulo}</h2>
+      <ul>
+  `;
+
+      areaConfig.objetivos.forEach(item => {
+        const estado = pessoa[item.campo] || "Sem dados";
+
+        let classe = "mid";
+        if (estado === "Validado") classe = "ok";
+        else if (estado === "Por Realizar") classe = "not";
+
+        html += `
+      <li>
+        <strong>${item.codigo}</strong> – ${item.texto}<br>
+        <span class="tag ${classe}">${estado}</span>
+      </li>
+    `;
+      });
+
+      html += `
+      </ul>
+    </div>
+  `;
+
+      return html;
+    }
+
+    function gerarEstatisticas(pessoa) {
+
+      const todos = [];
+
+      AREAS.forEach(area => {
+        area.objetivos.forEach(obj => {
+          const estado = pessoa[obj.campo];
+
+          todos.push({
+            codigo: obj.codigo,
+            texto: obj.texto,
+            estado
+          });
+        });
+      });
+
+      const total = todos.length;
+      const completos = todos.filter(x => x.estado === "Validado").length;
+      const porFazer = todos.filter(x => x.estado === "Por Realizar");
+
+      let listaHTML = "";
+
+      if (porFazer.length === 0) {
+        listaHTML = "<p>Tudo concluído 🎉</p>";
+      } else {
+        listaHTML += "<ul class='stats-list'>";
+        porFazer.forEach(x => {
+          listaHTML += `<li><strong>${x.codigo}</strong> – ${x.texto}</li>`;
+        });
+        listaHTML += "</ul>";
+      }
+
+      return `
+  <div class="stats-header">
+    <div class="stat-box total">Total<br><span>${total}</span></div>
+    <div class="stat-box done">Concluídos<br><span>${completos}</span></div>
+    <div class="stat-box pending">Por Fazer<br><span>${total - completos}</span></div>
+  </div>
+
+  <h3>Faltam:</h3>
+  ${listaHTML}
+`;
+
+    }
+
+
+
+    async function main() {
+
+      // 1️⃣ Ler nome da URL
+      const params = new URLSearchParams(window.location.search);
+      const nome = params.get("nome");
+
+      document.getElementById("nome").textContent = nome;
+
+      // 2️⃣ Carregar JSON
+      const data = await loadJSON();
+      const lista = data.Caminheiros;
+
+      // 3️⃣ Encontrar a pessoa
+      const pessoa = lista.find(p => p["Unnamed: 10"] === nome);
+
+      if (!pessoa) {
+        document.getElementById("trilhos").innerHTML = "<p>Não encontrado.</p>";
+        return;
+      }
+
+      // 4️⃣ Mostrar trilhos
+      const trilhosHTML = `
+    <p><strong>Caminho:</strong> ${pessoa["Unnamed: 6"] || "-"}</p>
+    <p><strong>Comunidade:</strong> ${pessoa["Unnamed: 7"] || "-"}</p>
+    <p><strong>Serviço:</strong> ${pessoa["Unnamed: 8"] || "-"}</p>
+    <p><strong>Partida:</strong> ${pessoa["Unnamed: 9"] || "-"}</p>
+  `;
+
+      document.getElementById("trilhos").innerHTML = trilhosHTML;
+
+      // 5️⃣ Renderizar TODAS as áreas automaticamente
+      let areasHTML = "";
+
+      AREAS.forEach(area => {
+        areasHTML += renderArea(pessoa, area);
+      });
+
+      document.getElementById("areas").innerHTML = areasHTML;
+
+      // === Estatísticas ===
+      const btn = document.getElementById("btnStats");
+      const panel = document.getElementById("statsPanel");
+
+      btn.onclick = () => {
+        panel.classList.toggle("hidden");
+
+        if (!panel.classList.contains("hidden")) {
+          panel.innerHTML = gerarEstatisticas(pessoa);
+          btn.textContent = "Esconder estatísticas";
+        } else {
+          btn.textContent = "Ver estatísticas";
+        }
+      };
+
+    }
+
+
+    main();
+
+  </script>
+
+</body>
+
+</html>

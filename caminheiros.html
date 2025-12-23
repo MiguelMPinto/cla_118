@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Caminheiros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegação -->
+    <nav>
+        <div class="nav-left">
+            <a href="caminheiros.html">Caminheiros</a>
+            <a href="trilhos.html">Trilhos</a>
+        </div>
+
+        <img src="img/agrup_logo.jpg" class="nav-logo">
+    </nav>
+
+
+    <div class="page">
+        <h1>Caminheiros</h1>
+
+        <p class="subtitle">Seleciona um caminheiro para ver o perfil e progresso.</p>
+
+
+        <div id="lista"></div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+    <script>
+        loadJSON().then(data => {
+            // Vamos assumir que a primeira folha tem os nomes
+            const sheet = Object.values(data)[0];
+            const div = document.getElementById("lista");
+
+            sheet.forEach(c => {
+                const nome = c["Unnamed: 10"];
+                if (!nome) return;
+
+                const btn = document.createElement("button");
+                btn.className = "caminheiro-btn";
+                btn.textContent = nome;
+
+                btn.onclick = () => {
+                    window.location.href = `perfil.html?nome=${encodeURIComponent(nome)}`;
+                }
+                div.appendChild(btn);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
